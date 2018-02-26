@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TaskAdministratorAPI.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+}
+
+
+
+<body style="background-color:powderblue;">
+
+    <div>
+        <h2>Make Room</h2>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <h2>Task @Html.DisplayNameFor(model => model.Title)</h2>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.TaskID">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+<p>
+    <a asp-action="Create">Create New Task</a> |
+    <a asp-action="SendToAssignmentsIndex">Go To Assignments</a> |
+    <a asp-action="SendToUsersIndex">Go To Users</a>
+</p>
